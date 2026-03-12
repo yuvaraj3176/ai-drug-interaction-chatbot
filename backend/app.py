@@ -2,7 +2,12 @@
 Main Flask Application for AI Drug Interaction Chatbot
 Member 1 Implementation
 """
-
+# Add with other imports
+from backend.chatbot.intent_classifier import IntentClassifier
+from backend.chatbot.entity_extractor import EntityExtractor
+from backend.chatbot.response_generator import ResponseGenerator
+from backend.database.drug_db import DrugDatabase
+from backend.database.interaction_checker import InteractionChecker
 from flask import Flask, render_template, request, jsonify, session
 from flask_cors import CORS
 import os
@@ -22,6 +27,12 @@ def create_app():
                 template_folder='../frontend/templates',
                 static_folder='../frontend/static')
     
+    # Initialize Member 2's modules
+    app.intent_classifier = IntentClassifier()
+    app.entity_extractor = EntityExtractor()
+    app.response_generator = ResponseGenerator()
+    app.drug_db = DrugDatabase(app.config['DATABASE'])
+    app.interaction_checker = InteractionChecker(app.config['DATABASE'])
     # Configuration
     app.config['SECRET_KEY'] = 'dev-secret-key-change-in-production'
     app.config['SESSION_TYPE'] = 'filesystem'
@@ -124,7 +135,7 @@ def register_routes(app):
     
     @app.route('/api/chat', methods=['POST'])
     def chat_api():
-        """API endpoint for chat messages"""
+        """API endpoint for chat messages with full NLP"""
         try:
             data = request.json
             user_message = data.get('message', '')
@@ -136,17 +147,55 @@ def register_routes(app):
             if 'session_id' not in session:
                 session['session_id'] = os.urandom(16).hex()
             
-            # TODO: Member 2 will implement the actual NLP logic
-            # For now, return a placeholder response
+            # Step 1: Classify intent
+            intent, confidence = app.intent_classifier.classify(user_message)
+            
+            # Step 2: Extract entities (drug names)
+            entities = app.entity_extractor.extract_entities(user_message)
+            drugs = entities.get('drugs', [])
+            
+            # Step 3: Get drug information if needed
+            drug_info = None
+            interaction_result = None
+            
+            if drugs:
+                # Get info for first drug if asking about drug info
+                if intent in ['drug_info', 'side_effects', 'dosage', 'contraindications']:
+                    drug_info = app.drug_db.get_drug_info(drugs[0])
+                
+                # Check interactions if multiple drugs
+                if intent == 'interaction_check' and len(drugs) >= 2:
+                    interaction_result = app.interaction_checker.check_interaction(drugs[0], drugs[1])
+            
+            # Step 4: Generate response
+            response_text = app.response_generator.generate_response(
+                intent=intent,
+                entities=entities,
+                interaction_result=interaction_result,
+                drug_info=drug_info
+            )
+            
+            # Step 5: Prepare response object
             response = {
                 'message': user_message,
-                'response': "🤖 I'm learning about drugs! This feature is being implemented by Member 2.",
-                'intent': 'unknown',
-                'drugs': [],
-                'timestamp': str(datetime.now())
+                'response': response_text,
+                'intent': intent,
+                'intent_description': app.intent_classifier.get_intent_description(intent),
+                'confidence': confidence,
+                'drugs': drugs,
+                'entities': entities,
+                'timestamp': datetime.now().isoformat()
             }
             
-            # Store in database (Member 1's task)
+            # Add interaction details if available
+            if interaction_result:
+                response['interaction'] = interaction_result
+            
+            # Add drug info if available
+            if drug_info:
+                response['drug_info'] = drug_info
+            
+            # Store in database
             store_chat_message(session['session_id'], user_message, response)
             
             return jsonify(response)
