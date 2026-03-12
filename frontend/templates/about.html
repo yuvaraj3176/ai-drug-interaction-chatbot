@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}About - Drug Interaction Chatbot{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">
+                    <i class="fas fa-info-circle me-2"></i>
+                    About This Project
+                </h4>
+            </div>
+            <div class="card-body">
+                <h5>🎯 Project Overview</h5>
+                <p>
+                    The <strong>AI-Powered Drug Interaction Chatbot</strong> is an intelligent system that uses 
+                    Natural Language Processing (NLP) and comprehensive drug databases to help users check 
+                    potential interactions between medications.
+                </p>
+                
+                <h5 class="mt-4">💡 Problem Statement</h5>
+                <p>
+                    Patients and healthcare providers often struggle to quickly check potential interactions 
+                    between multiple medications, leading to adverse drug reactions and health risks. 
+                    This chatbot provides instant, accurate information about drug interactions.
+                </p>
+                
+                <h5 class="mt-4">🔧 Technology Stack</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <i class="fab fa-python text-primary me-2"></i>
+                                Python 3.11
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fas fa-flask text-primary me-2"></i>
+                                Flask Framework
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fas fa-brain text-primary me-2"></i>
+                                NLP (spaCy, NLTK)
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <i class="fas fa-database text-primary me-2"></i>
+                                SQLite Database
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fab fa-bootstrap text-primary me-2"></i>
+                                Bootstrap 5
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fas fa-robot text-primary me-2"></i>
+                                Machine Learning
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h5 class="mt-4">👥 Team Members</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h6 class="card-title">Member 1</h6>
+                                <p class="card-text">
+                                    <strong>Responsibilities:</strong><br>
+                                    • Project setup & GitHub<br>
+                                    • Flask backend structure<br>
+                                    • Database design & setup<br>
+                                    • HTML templates
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h6 class="card-title">Member 2</h6>
+                                <p class="card-text">
+                                    <strong>Responsibilities:</strong><br>
+                                    • NLP implementation<br>
+                                    • Intent classification<br>
+                                    • Drug interaction logic<br>
+                                    • Chat interface
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h5 class="mt-4">⚠️ Disclaimer</h5>
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    This chatbot is for educational and informational purposes only. 
+                    It should not replace professional medical advice. Always consult 
+                    a healthcare provider or pharmacist before taking any medication.
+                </div>
+                
+                <h5 class="mt-4">📊 Data Sources</h5>
+                <p>
+                    The drug interaction data used in this project is based on publicly available 
+                    information and should not be considered clinically validated. In a production 
+                    environment, this would be replaced with FDA databases or licensed medical data.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+id,name,generic_name,category,description,side_effects,contraindications,dosage_info,created_at
+1,Paracetamol,Acetaminophen,Pain Relief,Used for pain and fever relief,"Nausea, rash",Liver disease,500mg every 4-6 hours,2026-03-12 09:32:56
+2,Ibuprofen,NSAID,Pain Relief,Anti-inflammatory pain reliever,"Stomach upset, heartburn","Asthma, stomach ulcers",200-400mg every 6-8 hours,2026-03-12 09:32:56
+3,Aspirin,Acetylsalicylic acid,Pain Relief,Pain reliever and blood thinner,"Stomach irritation, bleeding","Bleeding disorders, children under 12",75-100mg daily,2026-03-12 09:32:56
+4,Metformin,Glucophage,Diabetes,First-line medication for type 2 diabetes,"Nausea, diarrhea","Kidney disease, alcoholism",500mg twice daily,2026-03-12 09:32:56
+5,Amoxicillin,Penicillin,Antibiotic,Treats bacterial infections,"Diarrhea, rash",Penicillin allergy,250-500mg three times daily,2026-03-12 09:32:56
+6,Lisinopril,ACE Inhibitor,Blood Pressure,Treats high blood pressure,"Cough, dizziness","Pregnancy, angioedema",10mg daily,2026-03-12 09:32:56
+7,Omeprazole,Proton Pump Inhibitor,Acid Reflux,Reduces stomach acid,"Headache, nausea",Long-term use,20mg daily,2026-03-12 09:32:56
+8,Sertraline,SSRI,Antidepressant,Treats depression and anxiety,"Nausea, insomnia",MAOI use,50mg daily,2026-03-12 09:32:56
+9,Simvastatin,Statin,Cholesterol,Lowers cholesterol,Muscle pain,"Liver disease, pregnancy",20mg daily,2026-03-12 09:32:56
+10,Warfarin,Anticoagulant,Blood Thinner,Prevents blood clots,"Bleeding, bruising","Pregnancy, bleeding disorders",5mg daily,2026-03-12 09:32:56

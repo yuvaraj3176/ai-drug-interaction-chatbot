@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title %}Home - AI Drug Interaction Chatbot{% endblock %}
+
+{% block content %}
+<div class="row align-items-center min-vh-75">
+    <div class="col-md-6">
+        <h1 class="display-4 fw-bold text-primary">
+            <i class="fas fa-robot me-2"></i>
+            AI-Powered Drug Interaction Checker
+        </h1>
+        <p class="lead mt-3">
+            Check drug interactions instantly using advanced NLP and comprehensive drug databases.
+            Stay safe, stay informed!
+        </p>
+        
+        <hr class="my-4">
+        
+        <div class="mt-4">
+            <h5><i class="fas fa-star text-warning me-2"></i>Key Features:</h5>
+            <ul class="list-unstyled">
+                <li class="mb-2">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    Check interactions between multiple drugs
+                </li>
+                <li class="mb-2">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    Get detailed drug information
+                </li>
+                <li class="mb-2">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    AI-powered natural language understanding
+                </li>
+                <li class="mb-2">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    Severity ratings (mild, moderate, severe)
+                </li>
+                <li class="mb-2">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    Safety recommendations
+                </li>
+            </ul>
+        </div>
+        
+        <div class="mt-4">
+            <a href="{{ url_for('chat') }}" class="btn btn-primary btn-lg me-2">
+                <i class="fas fa-comment-dots me-2"></i>Start Chatting
+            </a>
+            <a href="{{ url_for('about') }}" class="btn btn-outline-primary btn-lg">
+                <i class="fas fa-info-circle me-2"></i>Learn More
+            </a>
+        </div>
+    </div>
+    
+    <div class="col-md-6 text-center">
+        <div class="card shadow">
+            <div class="card-body">
+                <i class="fas fa-pills fa-5x text-primary mb-3"></i>
+                <i class="fas fa-plus-circle fa-2x text-danger mx-2"></i>
+                <i class="fas fa-capsules fa-5x text-primary mb-3"></i>
+                
+                <div class="mt-4 p-3 bg-light rounded">
+                    <h6>Try asking:</h6>
+                    <p class="mb-1">"Can I take Paracetamol with Ibuprofen?"</p>
+                    <p class="mb-1">"Tell me about Metformin"</p>
+                    <p class="mb-1">"What are the side effects of Aspirin?"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5 pt-5">
+    <div class="col-12 text-center">
+        <h3>How It Works</h3>
+    </div>
+    
+    <div class="col-md-3 mt-3">
+        <div class="card h-100 shadow-sm text-center">
+            <div class="card-body">
+                <div class="display-1 text-primary">1️⃣</div>
+                <h5 class="card-title">Type Your Question</h5>
+                <p class="card-text">Ask about drug interactions, side effects, or dosage information in natural language.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mt-3">
+        <div class="card h-100 shadow-sm text-center">
+            <div class="card-body">
+                <div class="display-1 text-primary">2️⃣</div>
+                <h5 class="card-title">AI Understands</h5>
+                <p class="card-text">Our NLP model extracts drug names and identifies your intent from the text.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mt-3">
+        <div class="card h-100 shadow-sm text-center">
+            <div class="card-body">
+                <div class="display-1 text-primary">3️⃣</div>
+                <h5 class="card-title">Check Database</h5>
+                <p class="card-text">We query our comprehensive drug interaction database for matches.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mt-3">
+        <div class="card h-100 shadow-sm text-center">
+            <div class="card-body">
+                <div class="display-1 text-primary">4️⃣</div>
+                <h5 class="card-title">Get Answer</h5>
+                <p class="card-text">Receive instant information about interactions and safety recommendations.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
